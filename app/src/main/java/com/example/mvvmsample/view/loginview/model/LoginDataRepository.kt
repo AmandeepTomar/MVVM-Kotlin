@@ -10,7 +10,7 @@ class LoginDataRepository:BaseDataRepository(){
 
 
     fun sendLoginDetailsAsync(query:String):Deferred<Response<LoginModel>>{
-        return apiClient.loginApiInterface.getAsyncLogin("q")
+        return apiClient.loginApiInterface.getAsyncLogin(query)
     }
 
 

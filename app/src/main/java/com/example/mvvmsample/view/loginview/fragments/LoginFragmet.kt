@@ -51,13 +51,9 @@ class LoginFragmet : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        login.setOnClickListener {
-            handleLoginClick()
-        }
 
-        loginViewMode.addData().observe(this, Observer {
-            login.text=it
-        })
+
+
     }
 
     fun handleLoginClick(){
