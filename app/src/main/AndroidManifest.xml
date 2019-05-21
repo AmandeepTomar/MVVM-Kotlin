@@ -15,7 +15,7 @@
                 android:name=".view.dashboardview.DashboardActivity"
                 android:label="@string/title_activity_dashboard">
         </activity>
-        <activity android:name=".view.loginview.fragments.MainActivity">
+        <activity android:name=".view.loginview.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

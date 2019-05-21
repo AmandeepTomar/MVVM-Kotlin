@@ -1,4 +1,9 @@
 package com.example.mvvmsample.base
 
-class BaseDataRepository {
+import com.example.mvvmsample.retrofit.ApiClient
+import com.example.mvvmsample.utills.AppSharedPreference
+
+open class BaseDataRepository {
+    var apiClient = ApiClient
+    var sharedPreference = AppSharedPreference
 }

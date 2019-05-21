@@ -11,5 +11,10 @@ class ForgotPasswordViewModel(var application: MyApplication) : AndroidViewModel
         CommonUtills.setLog(application.packageName + " received")
     }
 
+    // bussineess logic
+    // verification
+    // api hitting
+
+
 
 }
