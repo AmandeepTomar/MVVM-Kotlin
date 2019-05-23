@@ -12,7 +12,9 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
 
-    // fun provide okHttp
+    /**Return OkHttpClient with some additional interceptor
+     * @return
+     * */
     private val provideOkHttpClient by lazy {
         OkHttpClient().newBuilder()
             .connectTimeout(30, TimeUnit.SECONDS)
@@ -28,8 +30,10 @@ object ApiClient {
             }.build()
     }
 
-
-    val provideRetrofitClient: Retrofit by lazy {
+    /**Return Retrofit client with base url , JSON parsing converter and coroutine adapter.
+     * @return
+     * */
+    private val provideRetrofitClient: Retrofit by lazy {
         Retrofit.Builder().client(provideOkHttpClient)
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
@@ -38,10 +42,15 @@ object ApiClient {
     }
 
 
+    /**Return the instance of LoginApiInterface that have all the method to hit api
+     * @return
+     * */
     val loginApiInterface:LoginApiInterface by lazy {
         provideRetrofitClient.create(LoginApiInterface::class.java)
     }
-
+    /**Return the instance of DashboardApiInterface that have all the method to hit api
+     * @return
+     * */
     val dashboardApiInterface:DashboardApiInterface by lazy {
         provideRetrofitClient.create(DashboardApiInterface::class.java)
     }

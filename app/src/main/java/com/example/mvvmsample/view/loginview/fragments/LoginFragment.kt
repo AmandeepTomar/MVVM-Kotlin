@@ -10,9 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
 import com.example.mvvmsample.R
+import com.example.mvvmsample.utills.CommonUtills
 import com.example.mvvmsample.view.loginview.viewmodel.LoginViewModel
+import com.marutidrivingschool.utility.extensions.showToast
 import kotlinx.android.synthetic.main.login_fragmet.*
-import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,11 +21,11 @@ import java.util.*
 
 /**
  * A simple [Fragment] subclass.
- * Use the [LoginFragmet.newInstance] factory method to
+ * Use the [LoginFragment.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
-class LoginFragmet : Fragment() {
+class LoginFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -52,20 +53,25 @@ class LoginFragmet : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        handleLoginClick()
 
     }
 
-    fun handleLoginClick(){
-        if(loginViewMode.name.equals("data")){
-           /* loginViewMode.name="sent data"
-            activity!!.supportFragmentManager.beginTransaction()
-                .replace(R.id.loginContainer,ForgotPasswordFragments.newInstance("",""))
-                .commit()*/
+   private fun handleLoginClick(){
+       btnLogin.setOnClickListener {
+           loginViewMode.hitLoginApi("aq","qw").observe(this, Observer {
+               CommonUtills.setLog(it.getMessage().toString())
+               val data=it.getData()
+               val message=it.getMessage()
+               data?.let {
+                    CommonUtills.setLog(data.toString())
+               } ?:run {
+                   showToast(message.toString())
+               }
 
-            loginViewMode.addData()
+           })
+       }
 
-        }
     }
 
 
@@ -78,12 +84,12 @@ class LoginFragmet : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragmet.
+         * @return A new instance of fragment LoginFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            LoginFragmet().apply {
+            LoginFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

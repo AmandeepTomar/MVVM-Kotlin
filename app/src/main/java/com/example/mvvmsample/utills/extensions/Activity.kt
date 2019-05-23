@@ -39,24 +39,5 @@ internal fun <T : AppCompatActivity> Fragment.start(cls: Class<T>, bundle: Bundl
     startActivity(intent)
 }
 
-internal fun <T : Service> AppCompatActivity.isMyServiceRunning(serviceClass: Class<T>): Boolean {
-    var manager: ActivityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-    for (service in manager.getRunningServices(Integer.MAX_VALUE)) {
-        if (serviceClass.name.equals(service.service.className)) {
-            return true
-        }
-    }
-    return false
-}
-
-internal fun <T : Service> Fragment.isMyServiceRunning(serviceClass: Class<T>): Boolean {
-    var manager: ActivityManager = context?.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-    for (service in manager.getRunningServices(Integer.MAX_VALUE)) {
-        if (serviceClass.name.equals(service.service.className)) {
-            return true
-        }
-    }
-    return false
-}
 
 

@@ -49,7 +49,6 @@ class ForgotPasswordFragments : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tvfrag2.text=loginViewMode.name
     }
 
 

@@ -8,12 +8,11 @@ import com.example.mvvmsample.utills.MyApplication
 class ForgotPasswordViewModel(var application: MyApplication) : AndroidViewModel(application) {
 
     init {
-        CommonUtills.setLog(application.packageName + " received")
+        CommonUtills.setLog(application.packageName + "")
     }
 
-    // bussineess logic
-    // verification
-    // api hitting
+    // We use this constructor of viewmodel when we required context in view model.
+    // this is application context not an view(activity) context.
 
 
 
