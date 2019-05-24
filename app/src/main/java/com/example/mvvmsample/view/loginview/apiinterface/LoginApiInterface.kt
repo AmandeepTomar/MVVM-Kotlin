@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface LoginApiInterface {
     @GET("search/repositories")
-    fun getAsyncLogin(@Query("q") query: String): Deferred<Response<LoginModel>>
+    fun getLoginAsync(@Query("q") query: String): Deferred<Response<LoginModel>>
 
 
 }

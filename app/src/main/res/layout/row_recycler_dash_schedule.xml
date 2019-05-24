@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="5dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:strokeColor="@color/colorError"
+        app:strokeWidth="2dp"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/rowGitUser"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        <ImageView
+                android:id="@+id/imgUser"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_launcher_background"/>
+
+        <TextView
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                android:padding="10dp"
+                android:gravity="center"
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRowName"
+                android:text="UserName"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgUser"
+        />
+
+        <TextView
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvRowUserScore"
+                android:text="Score:"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRowName"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

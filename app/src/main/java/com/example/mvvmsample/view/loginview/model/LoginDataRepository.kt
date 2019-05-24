@@ -5,12 +5,9 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Response
 
 class LoginDataRepository:BaseDataRepository(){
-    // get login interface
-    val apiInterface=apiClient.loginApiInterface
-
 
     fun sendLoginDetailsAsync(query:String):Deferred<Response<LoginModel>>{
-        return apiClient.loginApiInterface.getAsyncLogin(query)
+        return apiClient.loginApiInterface.getLoginAsync(query)
     }
 
 

@@ -6,8 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.example.mvvmsample.R
+import com.example.mvvmsample.base.Resource
+import com.example.mvvmsample.callback.OnItemCalanderListView
+import com.example.mvvmsample.view.dashboardview.DashboardViewModel
+import com.example.mvvmsample.view.dashboardview.adapters.DashRecyclerAdpater
+import com.example.mvvmsample.view.dashboardview.model.DashboardModel
+import com.example.mvvmsample.view.dashboardview.model.Items
+import com.marutidrivingschool.utility.extensions.showToast
+import kotlinx.android.synthetic.main.fragment_dash_board.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,15 +30,25 @@ import com.example.mvvmsample.R
  * create an instance of this fragment.
  *
  */
-class DashBoardFragment : Fragment() {
+class DashBoardFragment : Fragment(),OnItemCalanderListView {
+
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private  val ARG_PARAM1 = "param1"
-    private  val ARG_PARAM2 = "param2"
+    private val ARG_PARAM1 = "param1"
+    private val ARG_PARAM2 = "param2"
+    private var viewmodel: DashboardViewModel? = null
+    private var mAdpater:DashRecyclerAdpater?=null
+
+    override fun onItemcalanderListViewClick(position: Int, item: Items) {
+        showToast("${position}")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewmodel = ViewModelProviders.of(this).get(DashboardViewModel::class.java)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -39,6 +61,45 @@ class DashBoardFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dash_board, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        hitAdiTogeDashboardData()
+
+
+    }
+
+    fun hitAdiTogeDashboardData() {
+        viewmodel!!.getListData(true).observe(this, Observer {
+            when (it.status) {
+                Resource.LOADING -> {
+                    rvDashBoard.visibility = View.GONE
+                    dashBoardProgress.visibility = View.VISIBLE
+                }
+                Resource.SUCCESS -> {
+                    rvDashBoard.visibility = View.VISIBLE
+                    dashBoardProgress.visibility = View.GONE
+                    var data=it.data as DashboardModel
+                    data?.let {
+                        setRecyclerViewAdapter(data.items)
+                    }
+                }
+                Resource.ERROR -> {
+                    rvDashBoard.visibility = View.VISIBLE
+                    dashBoardProgress.visibility = View.GONE
+                    showToast("${it.message}")
+                }
+            }
+        })
+    }
+
+    fun setRecyclerViewAdapter(items: MutableList<Items>) {
+        rvDashBoard.layoutManager=LinearLayoutManager(activity)
+        mAdpater= DashRecyclerAdpater(this@DashBoardFragment)
+        mAdpater?.addListData(items)
+        rvDashBoard.adapter=mAdpater
     }
 
 

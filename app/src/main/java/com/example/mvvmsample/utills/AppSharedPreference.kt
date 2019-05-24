@@ -12,7 +12,7 @@ object AppSharedPreference {
         sharedPreferences.edit().putBoolean(PREF_USER_LOGIN, isUserLogin).apply()
     }
 
-    fun getUserIsLogin(context: Context):Boolean?{
+    fun getUserIsLogin(context: Context):Boolean{
         var sharedPrefernce: SharedPreferences =PreferenceManager.getDefaultSharedPreferences(context)
         return sharedPrefernce.getBoolean(PREF_USER_LOGIN,false)
     }

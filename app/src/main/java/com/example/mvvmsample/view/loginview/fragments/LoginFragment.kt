@@ -6,19 +6,31 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
 import com.example.mvvmsample.R
+import com.example.mvvmsample.base.Resource
+import com.example.mvvmsample.utills.AppSharedPreference
 import com.example.mvvmsample.utills.CommonUtills
+import com.example.mvvmsample.utills.extensions.invisible
+import com.example.mvvmsample.utills.extensions.visible
+import com.example.mvvmsample.view.dashboardview.DashboardActivity
+import com.example.mvvmsample.view.loginview.model.LoginDataRepository
+import com.example.mvvmsample.view.loginview.model.LoginModel
 import com.example.mvvmsample.view.loginview.viewmodel.LoginViewModel
+import com.findmyfans.util.extension.start
+import com.marutidrivingschool.baseclasses.awaitResult
+import com.marutidrivingschool.baseclasses.getOrThrow
 import com.marutidrivingschool.utility.extensions.showToast
 import kotlinx.android.synthetic.main.login_fragmet.*
+import kotlinx.coroutines.*
+import retrofit2.HttpException
+import java.lang.Exception
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
-
 /**
  * A simple [Fragment] subclass.
  * Use the [LoginFragment.newInstance] factory method to
@@ -35,7 +47,7 @@ class LoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loginViewMode=ViewModelProviders.of(activity!!).get(LoginViewModel::class.java)
+        loginViewMode=ViewModelProviders.of(this).get(LoginViewModel::class.java)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -59,21 +71,57 @@ class LoginFragment : Fragment() {
 
    private fun handleLoginClick(){
        btnLogin.setOnClickListener {
-           loginViewMode.hitLoginApi("aq","qw").observe(this, Observer {
-               CommonUtills.setLog(it.getMessage().toString())
-               val data=it.getData()
-               val message=it.getMessage()
-               data?.let {
-                    CommonUtills.setLog(data.toString())
-               } ?:run {
-                   showToast(message.toString())
-               }
-
-           })
+           try {
+               loginViewMode.hitLoginApi(etUserId.text.toString(),etPassword.text.toString()).observe(this, Observer {
+                   CommonUtills.setLog("${it.status} new data ${it.data.toString()}")
+                   when (it.status) {
+                       Resource.LOADING -> {
+                           btnLogin.visibility=View.INVISIBLE
+                           progressBarLogin.visibility=View.VISIBLE
+                       }
+                       Resource.SUCCESS -> {
+                           val response = it.data as LoginModel
+                           btnLogin.visibility=View.VISIBLE
+                           progressBarLogin.visibility=View.INVISIBLE
+                           response.let {
+                               CommonUtills.setLog(it.toString())
+                               showToast("User logged-in successfully")
+                               AppSharedPreference.setUserIsLogin(context!!,true)
+                               start(DashboardActivity::class.java)
+                           }
+                       }
+                       Resource.ERROR -> {
+                           btnLogin.visibility=View.VISIBLE
+                           progressBarLogin.visibility=View.INVISIBLE
+                           showToast(it.message.toString())
+                       }
+                   }
+               })
+           }catch (e:Exception){
+               CommonUtills.setLog(e.toString())
+           }
        }
 
     }
 
+
+
+
+
+    override fun onStop() {
+        super.onStop()
+        calledOnStopReleaseAllResourse()
+    }
+
+
+    fun calledOnStopReleaseAllResourse() {
+        var isActive = loginViewMode?.job?.isActive
+        if (isActive != null && isActive) {
+            CommonUtills.setLog("{loginViewMode?.job?.isActive}")
+            loginViewMode?.job?.cancel()
+
+        }
+    }
 
 
 

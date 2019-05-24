@@ -4,9 +4,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_dashboard">DashboardActivity</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Material Component</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Settings</string>
     <string name="welcome_to_the_login_page">Welcome to the login page</string>
     <string name="we_provide_the_solutions_for_the_augmented_reality_and_digital_identity">We provide the solutions for
         the augmented reality and digital identity

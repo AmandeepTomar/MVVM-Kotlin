@@ -77,7 +77,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/etUserId"
-                    android:text="hey"
             />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -118,6 +117,8 @@
                 app:layout_constraintGuide_percent=".80"/>
 
         <com.google.android.material.button.MaterialButton
+                android:padding="10dp"
+                android:visibility="visible"
                 android:layout_marginTop="10dp"
                 android:enabled="true"
                 android:id="@+id/btnLogin"
@@ -131,6 +132,7 @@
                 android:text="Login"
                 style="@style/Widget.MaterialComponents.Button"/>
         <com.google.android.material.button.MaterialButton
+                android:padding="10dp"
                 android:layout_marginTop="10dp"
                 android:enabled="true"
                 android:id="@+id/btnSignUp"
@@ -143,6 +145,19 @@
                 app:layout_constraintRight_toRightOf="@id/guideline2"
                 android:text="Sign up"
                 style="@style/Widget.MaterialComponents.Button"/>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progressBarLogin"
+                android:visibility="invisible"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="@id/guideline"
+                app:layout_constraintRight_toRightOf="@id/guideline2"
+                app:layout_constraintTop_toTopOf="@id/btnLogin"
+                app:layout_constraintBottom_toBottomOf="@id/btnLogin"
+
+        />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
