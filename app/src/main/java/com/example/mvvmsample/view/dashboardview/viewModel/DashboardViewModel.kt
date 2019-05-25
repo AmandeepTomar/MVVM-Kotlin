@@ -1,4 +1,4 @@
-package com.example.mvvmsample.view.dashboardview
+package com.example.mvvmsample.view.dashboardview.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

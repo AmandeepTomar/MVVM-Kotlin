@@ -21,6 +21,7 @@ import com.example.mvvmsample.view.loginview.model.LoginDataRepository
 import com.example.mvvmsample.view.loginview.model.LoginModel
 import com.example.mvvmsample.view.loginview.viewmodel.LoginViewModel
 import com.findmyfans.util.extension.start
+import com.findmyfans.util.extension.startWithFinish
 import com.marutidrivingschool.baseclasses.awaitResult
 import com.marutidrivingschool.baseclasses.getOrThrow
 import com.marutidrivingschool.utility.extensions.showToast
@@ -87,7 +88,9 @@ class LoginFragment : Fragment() {
                                CommonUtills.setLog(it.toString())
                                showToast("User logged-in successfully")
                                AppSharedPreference.setUserIsLogin(context!!,true)
-                               start(DashboardActivity::class.java)
+                               activity?.let {
+                                   startWithFinish(DashboardActivity::class.java)
+                               }
                            }
                        }
                        Resource.ERROR -> {

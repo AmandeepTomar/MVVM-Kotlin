@@ -8,6 +8,7 @@ import com.example.mvvmsample.view.dashboardview.fragments.DashBoardFragment
 import com.example.mvvmsample.view.dashboardview.fragments.MaterialComponentFragment
 import com.example.mvvmsample.view.dashboardview.fragments.SettingsFragment
 import com.findmyfans.util.extension.replaceFragment
+import com.marutidrivingschool.utility.extensions.showToast
 
 class DashboardActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -19,12 +20,12 @@ class DashboardActivity : AppCompatActivity() {
             }
             R.id.navigation_dashboard -> {
                 val fragment = MaterialComponentFragment.newInstance("", "")
-                supportFragmentManager.replaceFragment(R.id.dashboardContainer, fragment, "Home")
+                supportFragmentManager.replaceFragment(R.id.dashboardContainer, fragment, "MaterialComp")
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
                 val fragment = SettingsFragment.newInstance("", "")
-                supportFragmentManager.replaceFragment(R.id.dashboardContainer, fragment, "Home")
+                supportFragmentManager.replaceFragment(R.id.dashboardContainer, fragment, "Settings")
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -37,9 +38,16 @@ class DashboardActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        val fragment = MaterialComponentFragment.newInstance("", "")
-        supportFragmentManager.replaceFragment(R.id.dashboardContainer, fragment, "Home")
+        val fragment = DashBoardFragment.newInstance("", "")
+        supportFragmentManager.replaceFragment(R.id.dashboardContainer, fragment, "Dashboard")
 
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+    }
+
+    override fun onBackPressed() {
+        var count = supportFragmentManager.backStackEntryCount
+        if (count > 0) super.onBackPressed() else {
+            showToast("You will exit the app")
+        }
     }
 }

@@ -42,6 +42,18 @@ internal fun FragmentManager.replaceFragment(
 
 }
 
+internal fun FragmentManager.replaceFragmentWithBack(
+    containerViewId: Int,
+    fragment: Fragment,
+    tag: String
+) {
+    this.beginTransaction()
+        .replace(containerViewId, fragment, tag)
+        .addToBackStack(tag)
+        .commit()
+
+}
+
 
 
 

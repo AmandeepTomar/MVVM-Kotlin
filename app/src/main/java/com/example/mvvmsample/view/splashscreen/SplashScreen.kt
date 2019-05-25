@@ -25,13 +25,12 @@ class SplashScreen : AppCompatActivity() {
             delay(2000)
             if (isUserLogin) {
                 start(DashboardActivity::class.java)
+                finish()
             } else {
                 start(LoginActivity::class.java)
+                finish()
 
             }
         }
-
-
-
     }
 }

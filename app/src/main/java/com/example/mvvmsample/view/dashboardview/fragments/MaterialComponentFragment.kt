@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 
 import com.example.mvvmsample.R
-import com.example.mvvmsample.view.dashboardview.DashboardViewModel
+import com.example.mvvmsample.view.dashboardview.viewModel.DashboardViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +27,7 @@ class MaterialComponentFragment : Fragment() {
     private var param2: String? = null
     private  val ARG_PARAM1 = "param1"
     private  val ARG_PARAM2 = "param2"
-    private var viewModel:DashboardViewModel?=null
+    private var viewModel: DashboardViewModel?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

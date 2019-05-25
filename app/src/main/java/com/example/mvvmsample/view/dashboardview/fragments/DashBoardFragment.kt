@@ -2,22 +2,21 @@ package com.example.mvvmsample.view.dashboardview.fragments
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-
 import com.example.mvvmsample.R
 import com.example.mvvmsample.base.Resource
 import com.example.mvvmsample.callback.OnItemCalanderListView
-import com.example.mvvmsample.view.dashboardview.DashboardViewModel
 import com.example.mvvmsample.view.dashboardview.adapters.DashRecyclerAdpater
 import com.example.mvvmsample.view.dashboardview.model.DashboardModel
 import com.example.mvvmsample.view.dashboardview.model.Items
+import com.example.mvvmsample.view.dashboardview.viewModel.DashboardViewModel
+import com.findmyfans.util.extension.replaceFragmentWithBack
 import com.marutidrivingschool.utility.extensions.showToast
 import kotlinx.android.synthetic.main.fragment_dash_board.*
 
@@ -44,6 +43,8 @@ class DashBoardFragment : Fragment(),OnItemCalanderListView {
 
     override fun onItemcalanderListViewClick(position: Int, item: Items) {
         showToast("${position}")
+        val fragment=UserDetailsFragment.newInstance(item.url,"")
+        activity?.supportFragmentManager?.replaceFragmentWithBack(R.id.dashboardContainer,fragment,"UserDetails")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
