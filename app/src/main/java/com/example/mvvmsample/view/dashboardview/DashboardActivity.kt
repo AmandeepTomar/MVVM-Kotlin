@@ -38,6 +38,9 @@ class DashboardActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
+
+
+
         val fragment = DashBoardFragment.newInstance("", "")
         supportFragmentManager.replaceFragment(R.id.dashboardContainer, fragment, "Dashboard")
 

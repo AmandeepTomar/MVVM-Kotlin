@@ -86,7 +86,7 @@ class UserDetailsFragment : Fragment() {
     }
 
     fun setUpView(it: UserDetailsModel) {
-        Glide.with(imgBg).load(it.avatar_url).into(imgBg)
+     //   Glide.with(imgBg).load(it.avatar_url).into(imgBg)
         Glide.with(imgUserUserDetails).load(it.avatar_url).into(imgUserUserDetails)
         userName.text=it.name
         userCompany.text=it.company

@@ -24,10 +24,7 @@ suspend fun <T : Any> Deferred<Response<T>>.awaitResult(): Result<T> {
                               else{
                                   Result.Exception(NullPointerException("Response body is null"))
                               }
-
-
                           }
-
                       } else {
                           Result.Error(HttpException(response), response.raw())
                       }
@@ -43,8 +40,6 @@ suspend fun <T : Any> Deferred<Response<T>>.awaitResult(): Result<T> {
         registerOnCompletion(continuation)
     }
 }
-
-
 
 private fun Deferred<Response<*>>.registerOnCompletion(continuation: CancellableContinuation<*>) {
     continuation.invokeOnCancellation {

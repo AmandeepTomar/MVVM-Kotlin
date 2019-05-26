@@ -10,7 +10,6 @@
         app:strokeColor="@color/colorError"
         app:strokeWidth="2dp"
 >
-
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/rowGitUser"
             android:background="?android:attr/selectableItemBackground"
@@ -19,26 +18,28 @@
             >
 
         <ImageView
+                android:scaleType="fitXY"
                 android:id="@+id/imgUser"
                 android:layout_width="150dp"
-                android:layout_height="200dp"
+                android:layout_height="150dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/ic_launcher_background"/>
+                android:src="@drawable/ic_launcher_background"
+                app:layout_constraintHorizontal_bias="0.0"/>
 
         <TextView
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 android:padding="10dp"
-                android:gravity="center"
-                android:layout_width="0sp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvRowName"
                 android:text="UserName"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgUser"
-        />
+                app:layout_constraintStart_toEndOf="@+id/imgUser"
+
+                app:layout_constraintTop_toTopOf="@+id/imgUser" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
@@ -47,9 +48,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tvRowUserScore"
                 android:text="Score:"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvRowName"/>
+                app:layout_constraintTop_toBottomOf="@+id/tvRowName" app:layout_constraintStart_toEndOf="@+id/imgUser"
+                android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
 
 

@@ -10,9 +10,7 @@ import kotlinx.coroutines.*
 import java.lang.Exception
 
 class UserDetailsViewModel : ViewModel() {
-
     private var userJob:Job?=null
-
     fun hitApiTogetTheUserDetails(userName:String,isConnected:Boolean):MutableLiveData<Resource<Any>>{
         userJob= Job()
         var result : MutableLiveData<Resource<Any>> = MutableLiveData()
@@ -25,15 +23,9 @@ class UserDetailsViewModel : ViewModel() {
                         result.value=Resource.success(response)
                     }
                 }else result.value=Resource.error("Please check your internet connection",0)
-
-            }catch (e:Exception) {
-                result.value = Resource.error(e.message, 0)
-
-            }
+            }catch (e:Exception) { result.value = Resource.error(e.message, 0) }
         }
         return result
-
-
     }
 
 }

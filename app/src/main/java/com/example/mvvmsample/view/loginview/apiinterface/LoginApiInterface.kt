@@ -10,5 +10,4 @@ interface LoginApiInterface {
     @GET("search/repositories")
     fun getLoginAsync(@Query("q") query: String): Deferred<Response<LoginModel>>
 
-
 }
