@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="Material Button"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" android:layout_marginTop="12dp"
-            app:layout_constraintHorizontal_bias="0.063"/>
+            app:layout_constraintHorizontal_bias="0.0"/>
     <com.google.android.material.button.MaterialButton
             android:layout_marginBottom="10dp"
             android:id="@+id/simpleButton"
@@ -82,7 +82,7 @@
             app:layout_constraintTop_toBottomOf="@id/textButton"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content">
 
         <com.google.android.material.chip.Chip
@@ -116,7 +116,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/chip"
             android:padding="10dp"
-            android:text="BottomAppBar \n Backdrope Menu \n TextInputLayout \n Material cardview "
+            android:text="BottomAppBar \nBackdrope Menu \nTextInputLayout \nMaterial cardview "
     app:layout_constraintHorizontal_bias="0"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

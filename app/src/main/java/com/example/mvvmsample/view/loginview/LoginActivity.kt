@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.example.mvvmsample.R
 import com.example.mvvmsample.view.loginview.fragments.LoginFragment
 import com.example.mvvmsample.view.loginview.viewmodel.LoginViewModel
-import com.findmyfans.util.extension.replaceFragment
+import com.example.mvvmsample.utills.extensions.replaceFragment
 
 class LoginActivity : AppCompatActivity() {
     private var viewModel:LoginViewModel?=null

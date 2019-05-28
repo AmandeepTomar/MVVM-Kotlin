@@ -1,4 +1,4 @@
-package com.findmyfans.util.extension
+package com.example.mvvmsample.utills.extensions
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

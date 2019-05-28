@@ -4,6 +4,7 @@
           package="com.example.mvvmsample">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
             android:name=".utills.MyApplication"
             android:allowBackup="true"
@@ -12,11 +13,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            tools:ignore="GoogleAppIndexingWarning"
-    >
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-        <activity android:name=".view.splashscreen.SplashScreen"
-                  android:theme="@style/NoStatusBar">
+            tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".view.configurationchanges.ConfigurationChangeActivity">
+        </activity>
+
+        <uses-library
+                android:name="org.apache.http.legacy"
+                android:required="false"/>
+
+        <activity
+                android:name=".view.splashscreen.SplashScreen"
+                android:theme="@style/NoStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -27,8 +34,9 @@
                 android:name=".view.dashboardview.DashboardActivity"
                 android:label="@string/title_activity_dashboard">
         </activity>
-        <activity android:name=".view.loginview.LoginActivity"
-                  android:theme="@style/NoActionBar">
+        <activity
+                android:name=".view.loginview.LoginActivity"
+                android:theme="@style/NoActionBar">
         </activity>
     </application>
 

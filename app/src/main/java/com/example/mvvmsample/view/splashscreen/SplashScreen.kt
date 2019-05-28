@@ -7,7 +7,7 @@ import com.example.mvvmsample.utills.AppSharedPreference
 import com.example.mvvmsample.utills.CommonUtills
 import com.example.mvvmsample.view.dashboardview.DashboardActivity
 import com.example.mvvmsample.view.loginview.LoginActivity
-import com.findmyfans.util.extension.start
+import com.example.mvvmsample.utills.extensions.start
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

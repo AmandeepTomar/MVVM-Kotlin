@@ -37,6 +37,7 @@ class UserDetailsFragment : Fragment() {
     private  val ARG_PARAM1 = "param1"
     private  val ARG_PARAM2 = "param2"
     private var viewModel:UserDetailsViewModel?=null
+    private var userNAmeDetails=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,6 +89,7 @@ class UserDetailsFragment : Fragment() {
     fun setUpView(it: UserDetailsModel) {
      //   Glide.with(imgBg).load(it.avatar_url).into(imgBg)
         Glide.with(imgUserUserDetails).load(it.avatar_url).into(imgUserUserDetails)
+        userNAmeDetails=it.name
         userName.text=it.name
         userCompany.text=it.company
         userBlog.text=it.blog
@@ -96,10 +98,11 @@ class UserDetailsFragment : Fragment() {
         userPublicRepo.text="Public Repo ${it.public_repos}"
         userGits.text="Public Gits ${it.public_gists}"
 
+    }
 
-
-
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        activity?.title="$userNAmeDetails"
     }
 
 

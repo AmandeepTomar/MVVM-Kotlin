@@ -9,8 +9,10 @@ import android.view.ViewGroup
 
 import com.example.mvvmsample.R
 import com.example.mvvmsample.utills.AppSharedPreference
+import com.example.mvvmsample.view.configurationchanges.ConfigurationChangeActivity
 import com.example.mvvmsample.view.splashscreen.SplashScreen
-import com.findmyfans.util.extension.startWithFinish
+import com.example.mvvmsample.utills.extensions.start
+import com.example.mvvmsample.utills.extensions.startWithFinish
 import kotlinx.android.synthetic.main.fragment_notification.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -53,6 +55,12 @@ class SettingsFragment : Fragment() {
             AppSharedPreference.setUserIsLogin(context!!,false)
             startWithFinish(SplashScreen::class.java)
         }
+
+        configurationScreen.setOnClickListener {
+            start(ConfigurationChangeActivity::class.java)
+        }
+
+
     }
 
 

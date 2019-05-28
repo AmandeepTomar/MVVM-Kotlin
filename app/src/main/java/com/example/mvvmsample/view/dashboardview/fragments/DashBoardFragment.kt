@@ -16,8 +16,8 @@ import com.example.mvvmsample.view.dashboardview.adapters.DashRecyclerAdpater
 import com.example.mvvmsample.view.dashboardview.model.DashboardModel
 import com.example.mvvmsample.view.dashboardview.model.Items
 import com.example.mvvmsample.view.dashboardview.viewModel.DashboardViewModel
-import com.findmyfans.util.extension.replaceFragmentWithBack
-import com.marutidrivingschool.utility.extensions.showToast
+import com.example.mvvmsample.utills.extensions.replaceFragmentWithBack
+import com.example.mvvmsample.utills.extensions.showToast
 import kotlinx.android.synthetic.main.fragment_dash_board.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -101,6 +101,12 @@ class DashBoardFragment : Fragment(),OnItemCalanderListView {
         mAdpater= DashRecyclerAdpater(this@DashBoardFragment)
         mAdpater?.addListData(items)
         rvDashBoard.adapter=mAdpater
+    }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        activity?.title="User List"
     }
 
 

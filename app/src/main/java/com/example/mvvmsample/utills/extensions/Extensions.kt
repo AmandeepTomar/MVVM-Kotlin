@@ -1,4 +1,4 @@
-package com.marutidrivingschool.utility.extensions
+package com.example.mvvmsample.utills.extensions
 
 import android.app.Activity
 import android.content.Context

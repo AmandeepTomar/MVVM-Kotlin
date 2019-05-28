@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
@@ -14,20 +13,12 @@ import com.example.mvvmsample.R
 import com.example.mvvmsample.base.Resource
 import com.example.mvvmsample.utills.AppSharedPreference
 import com.example.mvvmsample.utills.CommonUtills
-import com.example.mvvmsample.utills.extensions.invisible
-import com.example.mvvmsample.utills.extensions.visible
 import com.example.mvvmsample.view.dashboardview.DashboardActivity
-import com.example.mvvmsample.view.loginview.model.LoginDataRepository
 import com.example.mvvmsample.view.loginview.model.LoginModel
 import com.example.mvvmsample.view.loginview.viewmodel.LoginViewModel
-import com.findmyfans.util.extension.start
-import com.findmyfans.util.extension.startWithFinish
-import com.marutidrivingschool.baseclasses.awaitResult
-import com.marutidrivingschool.baseclasses.getOrThrow
-import com.marutidrivingschool.utility.extensions.showToast
+import com.example.mvvmsample.utills.extensions.startWithFinish
+import com.example.mvvmsample.utills.extensions.showToast
 import kotlinx.android.synthetic.main.login_fragmet.*
-import kotlinx.coroutines.*
-import retrofit2.HttpException
 import java.lang.Exception
 
 // TODO: Rename parameter arguments, choose names that match

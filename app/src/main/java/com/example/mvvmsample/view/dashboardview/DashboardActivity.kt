@@ -7,8 +7,8 @@ import com.example.mvvmsample.R
 import com.example.mvvmsample.view.dashboardview.fragments.DashBoardFragment
 import com.example.mvvmsample.view.dashboardview.fragments.MaterialComponentFragment
 import com.example.mvvmsample.view.dashboardview.fragments.SettingsFragment
-import com.findmyfans.util.extension.replaceFragment
-import com.marutidrivingschool.utility.extensions.showToast
+import com.example.mvvmsample.utills.extensions.replaceFragment
+import com.example.mvvmsample.utills.extensions.showToast
 
 class DashboardActivity : AppCompatActivity() {
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

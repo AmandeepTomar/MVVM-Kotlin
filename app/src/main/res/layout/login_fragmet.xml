@@ -72,11 +72,15 @@
                 app:layout_constraintLeft_toLeftOf="@id/guideline"
                 app:layout_constraintRight_toRightOf="@id/guideline2"
                 app:layout_constraintTop_toBottomOf="@id/guideline3"
-                android:hint="@string/user_id">
+                android:hint="@string/user_id"
+        >
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/etUserId"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:inputType="textWebEmailAddress"
             />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -90,11 +94,16 @@
                 app:layout_constraintLeft_toLeftOf="@id/guideline"
                 app:layout_constraintRight_toRightOf="@id/guideline2"
                 app:layout_constraintTop_toBottomOf="@id/tilUserId"
-                android:hint="@string/user_id">
+                android:hint="Password"
+                app:passwordToggleEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/etPassword"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+
+
             />
 
         </com.google.android.material.textfield.TextInputLayout>

@@ -1,8 +1,5 @@
-package com.findmyfans.util.extension
+package com.example.mvvmsample.utills.extensions
 
-import android.app.ActivityManager
-import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
